@@ -1,0 +1,36 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		/* pnemos la version mas moderna de gradle */		
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'eclipse'
+
+jar {
+	baseName = 'Practica06'
+	version  = '0.1.0'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	/* aqui ponemos las dependencias de los jar para que se descarguen automaticamente 
+	se buscan como son los repositorios de maven para gradle y los agregamos */
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-test")
+	compile("org.thymeleaf:thymeleaf-spring4")
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.2.1'
+}
